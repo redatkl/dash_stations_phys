@@ -73,7 +73,7 @@ navbar_server <- function(id) {
       shinyjs::removeClass("geomonitoring_tab", "active")
       shinyjs::removeClass("reporting_tab", "active")
       
-      # Add active class to clicked tab test
+      # Add active class to clicked tab test before push
       shinyjs::addClass(paste0(tab_name, "_tab"), "active")
       
       # Update current page display
