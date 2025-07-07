@@ -10,25 +10,50 @@ library(shinyjs)
 # global settings
 source("global.R")
 
-
-# UI Definition
-ui <- page_fluid(
-  useShinyjs(),  
-  tags$head(
-    tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
+# ui definition
+ui <- navbarPage(
+  title = div(
+    img(src = "logo/logo.png", height = "40px"),
+    span("Observatoire de la sécheresse")
   ),
-  navbar_ui("navbar"),
-  mini_sidebar_ui("sidebar")
+  
+  # Move shinyjs and CSS to header
+  header = tagList(
+    useShinyjs(),
+    includeCSS("www/custom.css"),
+    # Add favicon
+    tags$head(
+      tags$link(rel = "icon", type = "image/ico", href = "favicon/favicon.ico"),
+      tags$link(rel = "shortcut icon", type = "image/ico", href = "favicon/favicon.ico")
+    )
+  ),
+  
+  # tabpanels
+  tabPanel(
+    title = "Accueil",
+    value = "home",
+    icon = icon("home"),
+    # Placeholder for home content
+    h2("Bienvenue à l'Observatoire de la sécheresse")
+  ),
+  tabPanel(
+    title = "Geomonitoring",
+    geomonitoring_ui("geomonitoring")
+  )
+  
+
 )
+
 
 # Server
 server <- function(input, output, session) {
   
   
   # We'll build this step by step
-  navbar_server("navbar")
+  geomonitoring_server("geomonitoring")
   
-  mini_sidebar_server("sidebar")
+  
+  
 }
 
 

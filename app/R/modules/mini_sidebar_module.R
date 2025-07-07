@@ -21,10 +21,22 @@ mini_sidebar_ui <- function(id) {
       title = "Indices de Végétation"
     ), 
     actionButton(
+      inputId = ns("soil_icon"),
+      label = icon("earth"),
+      class = "sidebar-icon",
+      title = "Indices de Sol"
+    ),
+    actionButton(
       inputId = ns("water_icon"),
-      label = icon("water"),
+      label = icon("droplet"),
       class = "sidebar-icon",
       title = "Indices d'Eau"
+    ),
+    actionButton(
+      inputId = ns("composite_icon"),
+      label = icon("layer-group"),
+      class = "sidebar-icon",
+      title = "Indices Combinés"
     )
   ),
   
@@ -50,6 +62,28 @@ mini_sidebar_ui <- function(id) {
       class = "panel-content",
       p("This is the stations panel content"))),
   
+  # Panel for the soil indices that will appear/disappear
+  div(
+    id = ns("soil_panel"),
+    class = "control-panel",
+    style = "display: none;",  # Hidden by default
+    
+    # Panel header with minus button
+    div(
+      class = "panel-header",
+      h4("Indices de sol"),
+      actionButton(
+        inputId = ns("close_panel_soil"),
+        label = icon("minus"),
+        class = "close-btn"
+      )
+    ),
+    
+    # Panel content
+    div(
+      class = "panel-content",
+      p("This is the soil panel content"))),
+  
   # Panel for the vegetation indices that will appear/disappear
   div(
     id = ns("vegetation_panel"),
@@ -70,7 +104,7 @@ mini_sidebar_ui <- function(id) {
     # Panel content
     div(
       class = "panel-content",
-      p("This is the vegetation panel content")))
+      p("This is the stations panel content")))
   
   )
 }
@@ -82,6 +116,8 @@ mini_sidebar_server <- function(id) {
     close_all_panels <- function() {
       shinyjs::hide("climate_panel")
       shinyjs::hide("vegetation_panel")
+      shinyjs::hide("soil_panel")
+      shinyjs::hide("water_panel")
     }
     
     # Show panel when icon clicked
@@ -96,6 +132,18 @@ mini_sidebar_server <- function(id) {
       shinyjs::show("vegetation_panel")
     })
     
+    # show panel for soil
+    observeEvent(input$soil_icon, {
+      close_all_panels()
+      shinyjs::show("soil_panel")
+    })
+    
+    # Show panel for water
+    observeEvent(input$water_icon, {
+      close_all_panels()
+      shinyjs::show("water_panel")
+    })
+    
     # Hide panel when minus button clicked
     observeEvent(input$close_panel, {
       shinyjs::hide("climate_panel")
@@ -104,6 +152,16 @@ mini_sidebar_server <- function(id) {
     # Hide veg panel when minus button clicked
     observeEvent(input$close_panel_veg, {
       shinyjs::hide("vegetation_panel")
+    })
+    
+    #hide soil panel when minus button clicked
+    observeEvent(input$close_panel_soil, {
+      shinyjs::hide("soil_panel")
+    })
+    
+    # Hide water panel when minus button clicked
+    observeEvent(input$close_panel_water, {
+      shinyjs::hide("water_panel")
     })
     
   })

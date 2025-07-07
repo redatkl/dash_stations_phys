@@ -11,4 +11,4 @@ library(dplyr)
 # custom modules
 source("R/api/endpoints.R")
 source("R/modules/mini_sidebar_module.R")
-source("R/modules/navbar_module.R")
+#source("R/modules/navbar_module.R")
