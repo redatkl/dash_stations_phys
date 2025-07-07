@@ -16,7 +16,8 @@ ui <- navbarPage(
     img(src = "logo/logo.png", height = "40px"),
     span("Observatoire de la sécheresse")
   ),
-  
+  selected = 'Geomonitoring',
+  collapsible = TRUE,
   # Move shinyjs and CSS to header
   header = tagList(
     useShinyjs(),
@@ -38,6 +39,7 @@ ui <- navbarPage(
   ),
   tabPanel(
     title = "Geomonitoring",
+    icon = icon("globe"),
     geomonitoring_ui("geomonitoring")
   )
   

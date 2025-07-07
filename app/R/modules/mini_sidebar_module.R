@@ -104,6 +104,51 @@ mini_sidebar_ui <- function(id) {
     # Panel content
     div(
       class = "panel-content",
+      p("This is the stations panel content"))),
+  
+  
+  # Panel for the climate indices that will appear/disappear
+  div(
+    id = ns("water_panel"),
+    class = "control-panel",
+    style = "display: none;",  # Hidden by default
+    
+    # Panel header with minus button
+    div(
+      class = "panel-header",
+      h4("Indices d'eau"),
+      actionButton(
+        inputId = ns("close_panel_water"),
+        label = icon("minus"),
+        class = "close-btn"
+      )
+    ),
+    
+    # Panel content
+    div(
+      class = "panel-content",
+      p("This is the stations panel content"))),
+  
+  # Panel for the combined indices that will appear/disappear
+  div(
+    id = ns("combine_panel"),
+    class = "control-panel",
+    style = "display: none;",  # Hidden by default
+    
+    # Panel header with minus button
+    div(
+      class = "panel-header",
+      h4("Indices Combinés"),
+      actionButton(
+        inputId = ns("close_panel_combine"),
+        label = icon("minus"),
+        class = "close-btn"
+      )
+    ),
+    
+    # Panel content
+    div(
+      class = "panel-content",
       p("This is the stations panel content")))
   
   )
@@ -118,6 +163,7 @@ mini_sidebar_server <- function(id) {
       shinyjs::hide("vegetation_panel")
       shinyjs::hide("soil_panel")
       shinyjs::hide("water_panel")
+      shinyjs::hide("combine_panel")
     }
     
     # Show panel when icon clicked
@@ -139,6 +185,12 @@ mini_sidebar_server <- function(id) {
     })
     
     # Show panel for water
+    observeEvent(input$water_icon, {
+      close_all_panels()
+      shinyjs::show("water_panel")
+    })
+    
+    # Show panel for combined indices
     observeEvent(input$water_icon, {
       close_all_panels()
       shinyjs::show("water_panel")
