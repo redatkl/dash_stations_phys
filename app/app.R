@@ -16,11 +16,11 @@ ui <- navbarPage(
     img(src = "logo/logo.png", height = "40px"),
     span("Observatoire de la sécheresse")
   ),
-  selected = 'Geomonitoring',
-  collapsible = TRUE,
+  #selected = 'Geomonitoring',
+  #collapsible = TRUE,
   # Move shinyjs and CSS to header
   header = tagList(
-    useShinyjs(),
+    shinyjs::useShinyjs(),
     includeCSS("www/custom.css"),
     # Add favicon
     tags$head(
@@ -53,7 +53,6 @@ server <- function(input, output, session) {
   
   # We'll build this step by step
   geomonitoring_server("geomonitoring")
-  
   
   
 }

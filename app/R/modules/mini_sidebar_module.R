@@ -1,6 +1,7 @@
 # mini_sidebar_module.R
 
 mini_sidebar_ui <- function(id) {
+  
   ns <- NS(id)
   
   tagList(
@@ -191,9 +192,9 @@ mini_sidebar_server <- function(id) {
     })
     
     # Show panel for combined indices
-    observeEvent(input$water_icon, {
+    observeEvent(input$composite_icon, {
       close_all_panels()
-      shinyjs::show("water_panel")
+      shinyjs::show("combine_panel")
     })
     
     # Hide panel when minus button clicked
@@ -214,6 +215,11 @@ mini_sidebar_server <- function(id) {
     # Hide water panel when minus button clicked
     observeEvent(input$close_panel_water, {
       shinyjs::hide("water_panel")
+    })
+    
+    # Hide combine panel when minus button clicked
+    observeEvent(input$close_panel_combine, {
+      shinyjs::hide("combine_panel")
     })
     
   })

@@ -31,8 +31,11 @@
 }
 
 .sidebar-icon:hover {
-  background-color: #008000;
+  background-color: #8B4513;
 }
+
+
+
 
 /* Control panels */
 .control-panel {
@@ -107,3 +110,14 @@
   background-color: rgba(255,255,255,0.2) !important;
   border-radius: 4px;
 }
+
+/*leaflet map styling */
+.leaflet-container {
+  position: fixed;
+  top: 75px;
+  left: 85px;
+  box-sizing: border-box;
+  border: 1px solid #8B4513;
+  border-radius: 10px;
+}
+
