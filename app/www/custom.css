@@ -40,24 +40,45 @@
 /* Control panels */
 .control-panel {
   position: fixed;
-  left: 60px;
-  top: 0;
+  left: 80px;
   width: 300px;
-  height: 100vh;
+  height: 70vh;
   background-color: white;
   border-right: 1px solid #ddd;
+  border-radius: 10px;
   z-index: 999;
   box-shadow: 2px 0 5px rgba(0,0,0,0.1);
 }
 
+/* Specific positioning for each panel */
+div[id$="climate_panel"] {
+  top: 70px; /* Aligns with climate button */
+}
+
+div[id$="vegetation_panel"] {
+  top: 90px; /* Aligns with vegetation button */
+}
+
+div[id$="soil_panel"] {
+  top: 110px; /* Aligns with soil button */
+}
+
+div[id$="water_panel"] {
+  top: 130px; /* Aligns with water button */
+}
+
+div[id$="composite_panel"]  /* Aligns with composite button */{
+  top: 150px !important; /* Aligns with composite button */
+}
 /* Panel header */
 .panel-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  padding: 10px;
   border-bottom: 1px solid #ddd;
   background-color: #f8f9fa;
+  border-radius: 10px;
 }
 
 .panel-header h4 {
@@ -67,8 +88,8 @@
 .close-btn {
   border: none;
   background: none;
-  font-size: 16px;
-  color: #6c757d;
+  font-size: 12px;
+  color: #90EE90;
 }
 
 .close-btn:hover {
@@ -82,7 +103,7 @@
 
 /* Custom navbar styling */
 .navbar {
-  background: linear-gradient(135deg, #90EE90 0%, #008000 100%);
+  background: linear-gradient(135deg, #008000 0%, #90EE90 100%);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   border: none;
 }
@@ -115,9 +136,13 @@
 .leaflet-container {
   position: fixed;
   top: 75px;
-  left: 85px;
+  left: 93px;
   box-sizing: border-box;
   border: 1px solid #8B4513;
   border-radius: 10px;
 }
+
+#climate_source input[type='radio'] {
+        accent-color: #28a745;
+      }
 

@@ -1,3 +1,4 @@
+source("R/modules/climate_panel_module.R")
 # mini_sidebar_module.R
 
 mini_sidebar_ui <- function(id) {
@@ -61,7 +62,7 @@ mini_sidebar_ui <- function(id) {
     # Panel content
     div(
       class = "panel-content",
-      p("This is the stations panel content"))),
+      climate_panel_ui(ns("climate_panel")))),
   
   # Panel for the soil indices that will appear/disappear
   div(
@@ -157,6 +158,9 @@ mini_sidebar_ui <- function(id) {
 
 mini_sidebar_server <- function(id) {
   moduleServer(id, function(input, output, session) {
+    
+    #server panels
+    climate_panel_server("climate_panel")
     
     # Function to close all panels
     close_all_panels <- function() {
