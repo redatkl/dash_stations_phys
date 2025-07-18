@@ -22,7 +22,8 @@ leaflet_map_server <- function(id, map_data) {
     
     output$map <- renderLeaflet({
       leaflet(map_data) %>%
-        addTiles() %>%
+        addProviderTiles(providers$Esri.WorldImagery)%>%
+        addProviderTiles(providers$CartoDB.VoyagerOnlyLabels)%>%
         setView(lng = -6.87, lat = 29 , zoom = 5)  # Adjust initial view as needed
     })
     

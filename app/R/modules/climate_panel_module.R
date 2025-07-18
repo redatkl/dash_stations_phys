@@ -5,28 +5,28 @@ climate_panel_ui <- function(id) {
   ns <- NS(id)
   
     tagList(
-      radioButtons(NS(id, "climate_source"),
+      customRadioButtons(
+        inputId = ns("climate_source"),
         label = " ",
-        choices = list(
-          "Précipitations" = "precip",
-          "Indices" = "index"
-        ),
-        selected = "precip"
+        choices = c("Précipitations" = "precip",
+                    "Indices" = "index"),
+        selected = "precip",
+        inline = TRUE
       ),
         
         conditionalPanel(
           condition = paste0("input['", ns("climate_source"), "'] == 'precip'"),
-          radioButtons(NS(id, "precip_source"),
-                       label = "Source de données",
-                       choices = list(
-                         "Stations physiques" = "stations_physiques",
-                         "Stations virtuelles" = "stations_virtuelles",
-                         "Précipitations satellite (CHIRPS)" = "chirps"
-                       ),
-                       selected = "stations_physiques"),
+          customRadioButtons(
+            inputId = ns("precip_source"),
+            label = "Source de données",
+            choices = c("Stations physiques" = "stations_physiques",
+                        "Stations virtuelles" = "stations_virtuelles",
+                        "Précipitations satellite (CHIRPS)" = "chirps"),
+            selected = "stations_physiques"
+          )
         ),
         
-      selectInput(
+      customSelectInput(
         inputId = ns("climate_type"),
         label = "Type d'indice climatique:",
         choices = list(

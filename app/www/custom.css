@@ -99,6 +99,7 @@ div[id$="composite_panel"]  /* Aligns with composite button */{
 /* Panel content */
 .panel-content {
   padding: 15px;
+  font-size: 14px;
 }
 
 /* Custom navbar styling */
