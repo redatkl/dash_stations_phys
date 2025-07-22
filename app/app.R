@@ -25,7 +25,9 @@ ui <- navbarPage(
     # Add favicon
     tags$head(
       tags$link(rel = "icon", type = "image/ico", href = "favicon/favicon.ico"),
-      tags$link(rel = "shortcut icon", type = "image/ico", href = "favicon/favicon.ico")
+      tags$link(rel = "shortcut icon", type = "image/ico", href = "favicon/favicon.ico"),
+      # importing bootsrap icons
+      tags$link(rel = "stylesheet", href = "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css")
     )
   ),
   

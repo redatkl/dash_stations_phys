@@ -5,154 +5,176 @@ mini_sidebar_ui <- function(id) {
   
   ns <- NS(id)
   
+  
   tagList(
-  # Just a simple div to start
-  div(
-    class = "mini-sidebar-container",
-    # Just one icon for now
-    actionButton(
-      inputId = ns("climate_icon"),
-      label = icon("cloud"),
-      class = "sidebar-icon",
-      title = "Indices Climat"
-    ),
-    actionButton(
-      inputId = ns("vegetation_icon"),
-      label = icon("leaf"),
-      class = "sidebar-icon",
-      title = "Indices de Végétation"
-    ), 
-    actionButton(
-      inputId = ns("soil_icon"),
-      label = icon("earth"),
-      class = "sidebar-icon",
-      title = "Indices de Sol"
-    ),
-    actionButton(
-      inputId = ns("water_icon"),
-      label = icon("droplet"),
-      class = "sidebar-icon",
-      title = "Indices d'Eau"
-    ),
-    actionButton(
-      inputId = ns("composite_icon"),
-      label = icon("layer-group"),
-      class = "sidebar-icon",
-      title = "Indices Combinés"
-    )
-  ),
-  
-  # Panel for the climate indices that will appear/disappear
-  div(
-    id = ns("climate_panel"),
-    class = "control-panel",
-    style = "display: none;",  # Hidden by default
-    
-    # Panel header with minus button
+    # Just a simple div to start
     div(
-      class = "panel-header",
-      h4("Indices Climat"),
+      class = "mini-sidebar-container",
+      # Just one icon for now
       actionButton(
-        inputId = ns("close_panel"),
-        label = icon("minus"),
-        class = "close-btn"
+        inputId = ns("climate_icon"),
+        label = icon("cloud"),
+        class = "sidebar-icon",
+        title = "Indices Climat"
+      ),
+      actionButton(
+        inputId = ns("vegetation_icon"),
+        label = icon("leaf"),
+        class = "sidebar-icon",
+        title = "Indices de Végétation"
+      ), 
+      actionButton(
+        inputId = ns("soil_icon"),
+        label = icon("earth"),
+        class = "sidebar-icon",
+        title = "Indices de Sol"
+      ),
+      actionButton(
+        inputId = ns("water_icon"),
+        label = icon("droplet"),
+        class = "sidebar-icon",
+        title = "Indices d'Eau"
+      ),
+      actionButton(
+        inputId = ns("composite_icon"),
+        label = icon("layer-group"),
+        class = "sidebar-icon",
+        title = "Indices Combinés"
+      ),
+      
+      # Separator
+      div(class = "sidebar-separator"),
+      
+      
+      # the button to have multiple map views
+      actionButton(
+        inputId = ns("double_view"),
+        label = "",
+        icon = tags$i(class = "bi bi-layout-split"),
+        class = "sidebar-view",
+        title = "Vue Double"
+      ),
+      
+      actionButton(
+        inputId = ns("quadruple-view"),
+        label = "",
+        icon = tags$i(class = "bi bi-grid"),
+        class = "sidebar-view",
+        title = "Vue quadruple"
       )
     ),
     
-    # Panel content
+    # Panel for the climate indices that will appear/disappear
     div(
-      class = "panel-content",
-      climate_panel_ui(ns("climate_panel")))),
-  
-  # Panel for the soil indices that will appear/disappear
-  div(
-    id = ns("soil_panel"),
-    class = "control-panel",
-    style = "display: none;",  # Hidden by default
+      id = ns("climate_panel"),
+      class = "control-panel",
+      style = "display: none;",  # Hidden by default
+      
+      # Panel header with minus button
+      div(
+        class = "panel-header",
+        h4("Indices Climat"),
+        actionButton(
+          inputId = ns("close_panel"),
+          label = icon("minus"),
+          class = "close-btn"
+        )
+      ),
+      
+      # Panel content
+      div(
+        class = "panel-content",
+        climate_panel_ui(ns("climate_panel")))),
     
-    # Panel header with minus button
+    # Panel for the soil indices that will appear/disappear
     div(
-      class = "panel-header",
-      h4("Indices de sol"),
-      actionButton(
-        inputId = ns("close_panel_soil"),
-        label = icon("minus"),
-        class = "close-btn"
-      )
-    ),
+      id = ns("soil_panel"),
+      class = "control-panel",
+      style = "display: none;",  # Hidden by default
+      
+      # Panel header with minus button
+      div(
+        class = "panel-header",
+        h4("Indices de sol"),
+        actionButton(
+          inputId = ns("close_panel_soil"),
+          label = icon("minus"),
+          class = "close-btn"
+        )
+      ),
+      
+      # Panel content
+      div(
+        class = "panel-content",
+        p("This is the soil panel content"))),
     
-    # Panel content
+    # Panel for the vegetation indices that will appear/disappear
     div(
-      class = "panel-content",
-      p("This is the soil panel content"))),
-  
-  # Panel for the vegetation indices that will appear/disappear
-  div(
-    id = ns("vegetation_panel"),
-    class = "control-panel",
-    style = "display: none;",  # Hidden by default
+      id = ns("vegetation_panel"),
+      class = "control-panel",
+      style = "display: none;",  # Hidden by default
+      
+      # Panel header with minus button
+      div(
+        class = "panel-header",
+        h4("Indices Végétation"),
+        actionButton(
+          inputId = ns("close_panel_veg"),
+          label = icon("minus"),
+          class = "close-btn"
+        )
+      ),
+      
+      # Panel content
+      div(
+        class = "panel-content",
+        p("This is the stations panel content"))),
     
-    # Panel header with minus button
-    div(
-      class = "panel-header",
-      h4("Indices Végétation"),
-      actionButton(
-        inputId = ns("close_panel_veg"),
-        label = icon("minus"),
-        class = "close-btn"
-      )
-    ),
     
-    # Panel content
+    # Panel for the climate indices that will appear/disappear
     div(
-      class = "panel-content",
-      p("This is the stations panel content"))),
-  
-  
-  # Panel for the climate indices that will appear/disappear
-  div(
-    id = ns("water_panel"),
-    class = "control-panel",
-    style = "display: none;",  # Hidden by default
+      id = ns("water_panel"),
+      class = "control-panel",
+      style = "display: none;",  # Hidden by default
+      
+      # Panel header with minus button
+      div(
+        class = "panel-header",
+        h4("Indices d'eau"),
+        actionButton(
+          inputId = ns("close_panel_water"),
+          label = icon("minus"),
+          class = "close-btn"
+        )
+      ),
+      
+      # Panel content
+      div(
+        class = "panel-content",
+        p("This is the stations panel content"))),
     
-    # Panel header with minus button
+    # Panel for the combined indices that will appear/disappear
     div(
-      class = "panel-header",
-      h4("Indices d'eau"),
-      actionButton(
-        inputId = ns("close_panel_water"),
-        label = icon("minus"),
-        class = "close-btn"
-      )
-    ),
+      id = ns("combine_panel"),
+      class = "control-panel",
+      style = "display: none;",  # Hidden by default
+      
+      # Panel header with minus button
+      div(
+        class = "panel-header",
+        h4("Indices Combinés"),
+        actionButton(
+          inputId = ns("close_panel_combine"),
+          label = icon("minus"),
+          class = "close-btn"
+        )
+      ),
+      
+      # Panel content
+      div(
+        class = "panel-content",
+        p("This is the stations panel content")))
     
-    # Panel content
-    div(
-      class = "panel-content",
-      p("This is the stations panel content"))),
-  
-  # Panel for the combined indices that will appear/disappear
-  div(
-    id = ns("combine_panel"),
-    class = "control-panel",
-    style = "display: none;",  # Hidden by default
-    
-    # Panel header with minus button
-    div(
-      class = "panel-header",
-      h4("Indices Combinés"),
-      actionButton(
-        inputId = ns("close_panel_combine"),
-        label = icon("minus"),
-        class = "close-btn"
-      )
-    ),
-    
-    # Panel content
-    div(
-      class = "panel-content",
-      p("This is the stations panel content")))
-  
   )
 }
 
@@ -225,6 +247,7 @@ mini_sidebar_server <- function(id) {
     observeEvent(input$close_panel_combine, {
       shinyjs::hide("combine_panel")
     })
+    
     
   })
 }
